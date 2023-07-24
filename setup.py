@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import os
+import sys
 import multiprocessing
 
 LLVM_ROOT = "./llvm-project"
@@ -28,8 +29,8 @@ def build_llvm() :
     os.chdir(llvm_build)
 
     # cmake
-    if len(ls) == 0 :
-        os.system("""cmake -DLLVM_ENABLE_PROJECTS=clang \
+    if len(ls) == 0 or "remake" in sys.argv:
+        os.system(f"""cmake -DLLVM_ENABLE_PROJECTS=clang \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DBUILD_SHARED_LIBS=On \
                 -DLLVM_BUILD_TOOLS=On \
@@ -40,6 +41,7 @@ def build_llvm() :
                 -DLLVM_ENABLE_LTO=On \
                 -DLLVM_ENABLE_DOXYGEN=Off \
                 -DLLVM_ENABLE_RTTI=Off \
+                -DLLVM_BINUTILS_INCDIR=/home/pingjui/binutils/include \
                 -G "Unix Makefiles" ../llvm""")
 
     # make
