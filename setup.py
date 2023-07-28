@@ -30,7 +30,9 @@ def build_llvm() :
 
     # cmake
     if len(ls) == 0 or "remake" in sys.argv:
-        os.system(f"""cmake -DLLVM_ENABLE_PROJECTS=clang \
+        os.system(f"""cmake \
+                -DLLVM_ENABLE_PROJECTS=clang \
+                -DLLVM_ENABLE_RUNTIMES=compiler-rt \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DBUILD_SHARED_LIBS=On \
                 -DLLVM_BUILD_TOOLS=On \
