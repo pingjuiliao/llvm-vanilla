@@ -43,7 +43,7 @@ def build_llvm() :
                 -DLLVM_ENABLE_LTO=On \
                 -DLLVM_ENABLE_DOXYGEN=Off \
                 -DLLVM_ENABLE_RTTI=Off \
-                -DLLVM_BINUTILS_INCDIR=/home/pingjui/binutils/include \
+                -DLLVM_BINUTILS_INCDIR=/home/pingjui/llvm-vanilla/binutils-gdb/include \
                 -G "Unix Makefiles" ../llvm""")
 
     # make
